@@ -1,4 +1,4 @@
-# GrapeFluid/MagicControl
+# GrapeFluid/MagicControl <img align="right" height="40px" src="https://developers.grapesc.cz/logo_inline.png">
 
 [![PHP from Packagist](https://img.shields.io/packagist/php-v/grape-fluid/magic-control.svg?style=flat-square)](https://packagist.org/packages/grape-fluid/magic-control)
 [![Build Status](https://img.shields.io/travis/grape-fluid/magic-control.svg?style=flat-square)](https://travis-ci.org/grape-fluid/magic-control)
