@@ -1,0 +1,18 @@
+{snippetArea}
+{*
+    TODO:
+        Nejde pouzit dynamicky <{$snippetName} n:snippet"...", protoze se neinicializuje n:makro, zkusit vyresit jinak?
+*}
+{if !$snippetElement}
+    {control $componentName}
+{elseif $snippetElement == 'span'}
+    <span n:snippet="$component->getName()">
+        {control $componentName}
+    </span>
+{else}
+    <div n:snippet="$component->getName()">
+       {control $componentName}
+    </div>
+{/if}
+
+{/snippetArea}

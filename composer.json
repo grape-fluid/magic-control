@@ -1,0 +1,46 @@
+{
+  "name": "grape-fluid/magic-control",
+  "keywords": ["grape-fluid", "fluid-cms", "nette"],
+  "type": "library",
+  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/grape-fluid/magic-control",
+  "authors": [
+    {
+      "name": "GRAPE SC, a.s.",
+      "email": "developers@grapesc.cz",
+      "homepage": "https://developers.grapesc.cz"
+    }
+  ],
+  "require": {
+    "php": ">= 5.6",
+    "grape-fluid/grape-fluid": "@dev",
+    "nette/application": "^2.4",
+
+
+    "nette/di": "^2.4",
+    "nette/caching": "^2.4"
+  },
+  "require-dev": {
+    "nette/tester": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Grapesc\\GrapeFluid\\MagicControl\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Fixtures\\": "tests/fixtures"
+    }
+  },
+  "scripts": {
+    "tester": [
+      "tester -s -C tests/cases"
+    ],
+    "coverage": [
+      "tester -s -C -d zend_extension=xdebug.so --coverage ./tests/.coverage.xml --coverage-src ./src tests/cases"
+    ]
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
+}
