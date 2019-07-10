@@ -26,6 +26,11 @@ class MagicTemplateFactory implements ITemplateFactory
 		$latte->addProvider('uiPresenter', $control->getPresenter());
 		$latte->addProvider('snippetBridge', new \Nette\Bridges\ApplicationLatte\SnippetBridge($control));
 
+		$translator = isset($control->translator) ? $control->translator : (isset($control->getPresenter()->translator) ? $control->getPresenter()->translator : null);
+		$latte->addFilter('translate', function (\Latte\Runtime\FilterInfo $fi, ...$args) use ($translator) {
+			return $translator ? $translator->translate(...$args) : $args[0];
+		});
+
 		$magicTemplate = new MagicTemplate($latte);
 		$magicTemplate->addParam('control', $control);
 		$magicTemplate->addParam('user', $control->getPresenter()->getUser());
