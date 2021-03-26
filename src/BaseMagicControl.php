@@ -80,7 +80,7 @@ abstract class BaseMagicControl extends Control implements IMagicControl
 	 */
 	protected function createComponent($name)
 	{
-		if ($this->getPresenter()->isAjax()) {
+		if ($this->getPresenter()->isAjax() || $this->getPresenter()->getRequest()->isMethod('POST')) {
 			$tempControlParams = $this->magicControlCreator->getControlParams($this->getName());
 			if (isset($tempControlParams[0])) {
 				$this->setParams($tempControlParams[0]);
