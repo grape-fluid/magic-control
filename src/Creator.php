@@ -31,7 +31,7 @@ class Creator
 	private $session;
 
 
-	public function __construct(array $magicControls = [], Container $container, IStorage $IStorage, Session $session)
+	public function __construct(array $magicControls = [], Container $container = null , IStorage $IStorage = null, Session $session = null)
 	{
 		$this->container = $container;
 		foreach ($magicControls AS $name => $options) {
