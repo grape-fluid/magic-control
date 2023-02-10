@@ -34,7 +34,7 @@ abstract class BaseMagicTemplateControl extends BaseMagicControl implements IMag
 		$template = $this->templateCacheService->load($magicControlName, $tid);
 
 		//read template from storages if template not in cache
-		if (is_null($template)) {
+		if (!$template) {
 			$template = $this->getTemplateSourceFromDB($magicControlName, $tid);
 
 			if (!$template) {
