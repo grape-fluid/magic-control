@@ -6,6 +6,7 @@ use Latte\Engine;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\ITemplate;
 use Nette\Application\UI\ITemplateFactory;
+use Nette\Application\UI\Template;
 
 
 /**
@@ -18,7 +19,7 @@ class MagicTemplateFactory implements ITemplateFactory
 	 * @param Control|null $control
 	 * @return ITemplate
 	 */
-	function createTemplate(Control $control = NULL)
+	function createTemplate(?Control $control = null): Template
 	{
 		/* @var $latte Engine */
 		$latte = clone $control->getParent()->getTemplate()->getLatte();
@@ -36,7 +37,7 @@ class MagicTemplateFactory implements ITemplateFactory
 		$magicTemplate->addParam('user', $control->getPresenter()->getUser());
 		$magicTemplate->addParam('presenter', $control->getPresenter());
 		$magicTemplate->addParam('basePath', $control->getPresenter()->getTemplate()->basePath);
-		$magicTemplate->addParam('baseUri', $control->getPresenter()->getTemplate()->baseUri);
+		$magicTemplate->addParam('baseUri', $control->getPresenter()->getTemplate()->baseUrl);
 
 		return $magicTemplate;
 	}

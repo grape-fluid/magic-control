@@ -118,8 +118,12 @@ class MagicControl extends Control
 	 * @param array $params
 	 * @param null $templateName
 	 */
-	private function startup(array $params = [], $templateName = null)
+	private function startup(array|string $params = [], $templateName = null)
 	{
+		if (is_string($params)) {
+			$params = [$params];
+		}
+
 		if (!$this->isStarted) {
 			$this->component->setParams($params);
 			$this->component->prepare();
