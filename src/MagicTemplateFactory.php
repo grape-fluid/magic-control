@@ -25,12 +25,13 @@ class MagicTemplateFactory implements ITemplateFactory
 		$latte = clone $control->getParent()->getTemplate()->getLatte();
 		$latte->addProvider('uiControl', $control);
 		$latte->addProvider('uiPresenter', $control->getPresenter());
-		$latte->addProvider('snippetBridge', new \Nette\Bridges\ApplicationLatte\SnippetBridge($control));
+//		$latte->addProvider('snippetBridge', new \Nette\Bridges\ApplicationLatte\SnippetBridge($control));
 
 		$translator = isset($control->translator) ? $control->translator : (isset($control->getPresenter()->translator) ? $control->getPresenter()->translator : null);
-		$latte->addFilter('translate', function (\Latte\Runtime\FilterInfo $fi, ...$args) use ($translator) {
-			return $translator ? $translator->translate(...$args) : $args[0];
-		});
+//		$latte->addFilter('translate', function (\Latte\Runtime\FilterInfo $fi, ...$args) use ($translator) {
+//			return $translator ? $translator->translate(...$args) : $args[0];
+//		});
+
 
 		$magicTemplate = new MagicTemplate($latte);
 		$magicTemplate->addParam('control', $control);
@@ -39,6 +40,7 @@ class MagicTemplateFactory implements ITemplateFactory
 		$magicTemplate->addParam('basePath', $control->getPresenter()->getTemplate()->basePath);
 		$magicTemplate->addParam('baseUri', $control->getPresenter()->getTemplate()->baseUrl);
 
+		$magicTemplate->setTranslator($translator);
 		return $magicTemplate;
 	}
 
