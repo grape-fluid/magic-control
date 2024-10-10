@@ -62,7 +62,7 @@ class Helper
 				$arguments         = explode(",", $macro[2]);
 				$tid               = "'" . hash('crc32b', serialize($macro) . $key . $parent->getName()) . "'";
 				$templateName      = array_key_exists(3, $macro) ? ','.substr($macro[3], 1) : '';
-				$magicControlMacro = "{magicControl $name,[" . implode(",", array_merge([$tid], $arguments)) . "]$templateName}";
+				$magicControlMacro = "{magicControl $name [" . implode(",", array_merge([$tid], $arguments)) . "]$templateName}";
                 $magicControlMacro = "<!-- START - $match -->" . $magicControlMacro . "<!-- END - $match -->";
 
 				$suspect = $name . "_" . implode("_", $arguments);

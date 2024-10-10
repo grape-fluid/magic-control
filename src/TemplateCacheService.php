@@ -51,7 +51,7 @@ class TemplateCacheService
 	public function load($magicControlName, $tid)
 	{
 		$cache = $this->getTemplateCache();
-		return $cache->load($this->getCacheKey($magicControlName, $tid), false);
+		return $cache->load($this->getCacheKey($magicControlName, $tid), null);
 	}
 
 

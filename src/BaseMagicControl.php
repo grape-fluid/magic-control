@@ -4,6 +4,7 @@ namespace Grapesc\GrapeFluid\MagicControl;
 
 use Grapesc\GrapeFluid\ScriptCollector;
 use Nette\Application\UI\Control;
+use Nette\ComponentModel\IComponent;
 
 
 /**
@@ -62,7 +63,7 @@ abstract class BaseMagicControl extends Control implements IMagicControl
 	 * @param string|null $snippet
 	 * @param bool $redraw
 	 */
-	public function redrawControl($snippet = null, $redraw = true)
+	public function redrawControl(?string $snippet = null, bool $redraw = true): void
 	{
 		/** @var MagicControl $magicControl */
 		$magicControl = $this->getParent();
@@ -78,7 +79,7 @@ abstract class BaseMagicControl extends Control implements IMagicControl
 	 * @param $name
 	 * @return MagicControl|\Nette\ComponentModel\IComponent
 	 */
-	protected function createComponent($name)
+	protected function createComponent(string $name): ?IComponent
 	{
 		if ($this->getPresenter()->isAjax() || $this->getPresenter()->getRequest()->isMethod('POST')) {
 			$tempControlParams = $this->magicControlCreator->getControlParams($this->getName());
