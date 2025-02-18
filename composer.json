@@ -12,13 +12,10 @@
     }
   ],
   "require": {
-    "php": ">= 5.6",
-    "grape-fluid/grape-fluid": "@dev",
-    "nette/application": "^2.4",
-
-
-    "nette/di": "^2.4",
-    "nette/caching": "^2.4"
+    "php": ">= 8.2",
+    "nette/application": "3.2.*",
+    "nette/di": "3.2.*",
+    "nette/caching": "3.2.*"
   },
   "require-dev": {
     "nette/tester": "^2.0"

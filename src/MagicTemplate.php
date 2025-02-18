@@ -5,14 +5,14 @@ namespace Grapesc\GrapeFluid\MagicControl;
 use Latte\Engine;
 use Latte\Loaders\FileLoader;
 use Latte\Loaders\StringLoader;
-use Nette\Application\UI\ITemplate;
-
+use Nette\Application\UI\Template;
+use Nette\Bridges\ApplicationLatte\Template as NetteTemplate;
 
 /**
  * @author Jiri Novy <novy@grapesc.cz>
  * @author Mira Jakes <jakes@grapesc.cz>
  */
-class MagicTemplate implements ITemplate
+class MagicTemplate extends NetteTemplate implements Template
 {
 
 	/** @var string */
@@ -35,6 +35,7 @@ class MagicTemplate implements ITemplate
 	public function __construct(Engine $latte)
 	{
 		$this->latte = $latte;
+		parent::__construct($latte);
 	}
 
 
@@ -62,7 +63,7 @@ class MagicTemplate implements ITemplate
 	 * Renders template to output.
 	 * @return void
 	 */
-	public function render()
+	public function render(?string $file = null, array $params = []): void
 	{
 		$this->latte->setLoader($this->file ? new FileLoader() : new StringLoader());
 		$this->latte->render($this->file ?: $this->source, $this->params);
@@ -83,19 +84,11 @@ class MagicTemplate implements ITemplate
 	 * @param  string
 	 * @return static
 	 */
-	public function setFile($file)
+	public function setFile($file): static
 	{
 		$this->file = $file;
+		return $this;
 	}
 
-
-	/**
-	 * Returns the path to the template file.
-	 * @return string|NULL
-	 */
-	public function getFile()
-	{
-		return $this->file;
-	}
 
 }
